@@ -4,6 +4,8 @@ import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
+import org.apache.spark.sql.sources.In;
+
 import static org.apache.spark.sql.functions.*;
 
 import java.util.Scanner;
@@ -20,8 +22,8 @@ public class highestHP {
         Dataset avgHpDF = inputDf.groupBy("Origin").avg("Horsepower");
 
 
-        int N = 3;
-        String O = "US";
+        int N = Integer.parseInt(args[0]);
+        String O = args[1];
 
         String conditionOrig = "Origin == \""+O+"\"";
 
